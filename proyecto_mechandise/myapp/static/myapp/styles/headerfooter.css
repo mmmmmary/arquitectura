@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Estilos del header y navbar */
+  header {
+    background-color: #f4b2d3;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .navbar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  /* Centrado del navbar */
+  .navbar-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Dropdown */
+  .dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none; /* Ocultar por defecto */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    min-width: 150px;
+    z-index: 100;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block; /* Mostrar cuando se pasa el mouse */
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.dropdown-menu a:hover {
+    background-color: #e86daa;
+}
+
+  /* Estilos del enlace */
+  .navbar a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  /* Searchbar */
+  .searchbar {
+    display: flex;
+    align-items: center;
+  }
+
+  .searchbar input[type="text"] {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+  }
+
+  .searchbar button {
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+  .searchbar button:hover {
+    background-color: #555;
+  }
+
+  /* Iconos de carrito y perfil */
+  .iconos {
+    display: flex;
+    gap: 15px;
+    font-size: 20px;
+    color: #333;
+    padding-right: 150px; /* Agrega espacio a la derecha para mover los íconos hacia la izquierda */
+}
+
+.iconos i {
+    cursor: pointer;
+    transition: color 0.2s;
+    margin-left: 5px; /* Ajuste adicional para mover los íconos individuales más hacia la izquierda */
+}
+
+.iconos i:hover {
+    color: #555;
+}
+
+
+  footer {
+    background-color: #f4b2d3;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Logo más grande en el footer */
+  footer .logo img {
+    height: 80px;
+  }
+
+  /* Iconos de redes sociales */
+  .social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+  }
+
+  .social-icons a {
+    font-size: 24px;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .social-icons a:hover {
+    color: #555;
+  }

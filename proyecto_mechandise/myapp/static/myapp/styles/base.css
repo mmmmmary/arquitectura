@@ -1,0 +1,110 @@
+/* external css: flickity.css */
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body { 
+    font-family: sans-serif; 
+}
+
+.gallery {
+    background: #EEE;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.gallery-cell {
+    width: 100%; /* Ajusta el ancho según tus necesidades */
+    height: 500px; /* Ajusta la altura según prefieras */
+    margin-right: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.gallery-cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta la imagen para que cubra todo el contenedor */
+    display: block;
+}
+
+
+.product-slider-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .product-slider-container h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .product-slider .product-item {
+    padding: 10px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .product-slider .product-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .product-slider .product-item p {
+    font-family: 'Poppins', sans-serif;
+    margin: 5px 0;
+  }
+  
+  .product-slider .buy-btn {
+    background-color: #f65151;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+  }
+  
+  .product-slider .buy-btn:hover {
+    background-color: #ff7b7b;
+  }
+  
+  /* Estilos para las flechas de navegación del slider */
+.product-slider .owl-nav button.owl-prev,
+.product-slider .owl-nav button.owl-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+  color: white;
+  font-size: 24px; /* Tamaño de la flecha */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+/* Posición de las flechas en los laterales */
+.product-slider .owl-nav button.owl-prev {
+  left: 1px; /* Ajusta para posicionar a la izquierda del slider */
+}
+
+.product-slider .owl-nav button.owl-next {
+  right: 1px; /* Ajusta para posicionar a la derecha del slider */
+}
+
+/* Cambiar el tamaño de iconos en el hover */
+.product-slider .owl-nav button.owl-prev:hover,
+.product-slider .owl-nav button.owl-next:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+  font-size: 28px; /* Aumenta el tamaño de la flecha en hover */
+}
+
+  

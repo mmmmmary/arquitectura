@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Header con Navbar</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="{% static 'myapp/styles/headerfooter.css' %}" />
+    <link rel="stylesheet" href="{% static 'myapp/styles/base.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.css" />
+</head>
+<body>
+
+    <!-- Flickity HTML init -->
+    <div class="gallery js-flickity" data-flickity-options='{ "wrapAround": true, "autoPlay": 3000, "prevNextButtons": true }'>
+        <div class="gallery-cell">
+            <img src="{% static 'myapp/img/coleccion70.png' %}" alt="Colección 70s" />
+        </div>
+        <div class="gallery-cell">
+            <img src="{% static 'myapp/img/todocoleccion.png' %}" alt="Todo Colección" />
+        </div>
+        <div class="gallery-cell">
+            <img src="{% static 'myapp/img/envio.png' %}" alt="Envío" />
+        </div>
+    </div>
+
+    <!-- Slider de productos -->
+    <div class="product-slider-container">
+        <h2>Productos Destacados</h2>
+        <div class="owl-carousel product-slider">
+            <!-- Producto 1 -->
+            <div class="product-item">
+                <img src="{% static 'myapp/img/bob_dylan.png' %}" alt="Producto 1" />
+                <p>Producto 1</p>
+                <p>$20.00</p>
+                <button class="buy-btn">Comprar</button>
+            </div>
+            <!-- Producto 2 -->
+            <div class="product-item">
+                <img src="{% static 'myapp/img/paul_mcartney.png' %}" alt="Producto 2" />
+                <p>Producto 2</p>
+                <p>$25.00</p>
+                <button class="buy-btn">Comprar</button>
+            </div>
+            <!-- Producto 3 -->
+            <div class="product-item">
+                <img src="{% static 'myapp/img/david_bowie.png' %}" alt="Producto 3" />
+                <p>Producto 3</p>
+                <p>$30.00</p>
+                <button class="buy-btn">Comprar</button>
+            </div>
+            <!-- Agrega más productos según sea necesario -->
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.pkgd.js"></script>
+    
+    <script>
+        $(document).ready(function(){
+            // Inicializar Flickity
+            $('.gallery').flickity({
+                wrapAround: true,
+                autoPlay: 3000,
+                prevNextButtons: true,
+                pageDots: true
+            });
+
+            // Inicializar OwlCarousel
+            $('.product-slider').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                dots: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 3
+                    }
+                }
+            });
+        });
+    </script>
+    
+    <script src="{% static 'myapp/scripts/carrousel.js' %}"></script>
+    <script src="{% static 'myapp/scripts/headerfooter.js' %}"></script>
+</body>
+</html>
