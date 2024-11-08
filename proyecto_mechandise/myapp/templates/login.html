@@ -12,7 +12,7 @@
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <h3 class="text-center mb-4">Iniciar Sesión</h3>
-                <form method="post">
+                <form method="post" action="{% url 'myapp:login' %}">
                     {% csrf_token %}
                     <div class="mb-3">
                         <label for="username" class="form-label">Nombre de usuario</label>

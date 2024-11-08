@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Header con Navbar</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" crossorigin="anonymous" />
@@ -16,7 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.css" />
 </head>
 <body>
-
+    <input type="hidden" id="csrfToken" value="{% csrf_token %}">
     <!-- Flickity HTML init -->
     <div class="gallery js-flickity" data-flickity-options='{ "wrapAround": true, "autoPlay": 3000, "prevNextButtons": true }'>
         <div class="gallery-cell">
@@ -34,28 +35,18 @@
     <div class="product-slider-container">
         <h2>Productos Destacados</h2>
         <div class="owl-carousel product-slider">
-            <!-- Producto 1 -->
-            <div class="product-item">
-                <img src="{% static 'myapp/img/bob_dylan.png' %}" alt="Producto 1" />
-                <p>Producto 1</p>
-                <p>$20.00</p>
-                <button class="buy-btn">Comprar</button>
-            </div>
-            <!-- Producto 2 -->
-            <div class="product-item">
-                <img src="{% static 'myapp/img/paul_mcartney.png' %}" alt="Producto 2" />
-                <p>Producto 2</p>
-                <p>$25.00</p>
-                <button class="buy-btn">Comprar</button>
-            </div>
-            <!-- Producto 3 -->
-            <div class="product-item">
-                <img src="{% static 'myapp/img/david_bowie.png' %}" alt="Producto 3" />
-                <p>Producto 3</p>
-                <p>$30.00</p>
-                <button class="buy-btn">Comprar</button>
-            </div>
-            <!-- Agrega más productos según sea necesario -->
+            {% for producto in productos %}
+                <div class="product-item">
+                    <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" />
+                    <p>{{ producto.nombre }}</p>
+                    <p>${{ producto.precio }}</p>
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'myapp:agregar_al_carrito' producto.id %}" class="btn btn-primary buy-btn">Comprar</a>
+                    {% else %}
+                        <a href="{% url 'myapp:login' %}" class="btn btn-primary buy-btn">Inicia sesión para comprar</a>
+                    {% endif %}
+                </div>
+            {% endfor %}
         </div>
     </div>
 
@@ -92,7 +83,13 @@
             });
         });
     </script>
-    
+    {% if user.is_authenticated %}
+    <script id="user-authenticated" type="application/json">true</script>
+    <script id="username" type="application/json">{{ user.username }}</script>
+    {% else %}
+    <script id="user-authenticated" type="application/json">false</script>
+    {% endif %}
+
     <script src="{% static 'myapp/scripts/carrousel.js' %}"></script>
     <script src="{% static 'myapp/scripts/headerfooter.js' %}"></script>
 </body>

@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link rel="stylesheet" href="{% static 'myapp/styles/carrito.css' %}">
+</head>
+<body>
+    <div class="carrito-container">
+        <h2>Tu carrito de compras</h2>
+        {% if carrito and carrito.items.all %}
+            <ul>
+            {% for item in carrito.items.all %}
+                <li>
+                    <span>{{ item.producto.nombre }} - {{ item.cantidad }} - ${{ item.precio_total }}</span>
+                    <a href="{% url 'myapp:eliminar_item_carrito' item.id %}" class="btn-eliminar">Eliminar</a>
+                </li>
+            {% endfor %}
+            </ul>
+            <p class="total">Total: ${{ carrito.items.all|sum:'precio_total' }}</p>
+        {% else %}
+            <p>Tu carrito está vacío.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

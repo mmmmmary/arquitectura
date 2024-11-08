@@ -1,6 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
+    const csrfTokenElement = document.getElementById('csrfToken');
+    const csrfToken = csrfTokenElement ? csrfTokenElement.value : '';
     // Comprobar si el header ya existe
     if (!document.querySelector('header')) {
+        // Comprobar si los elementos de autenticación están presentes
+        const isAuthenticatedElement = document.getElementById('user-authenticated');
+        const usernameElement = document.getElementById('username');
+        const isAuthenticated = isAuthenticatedElement ? JSON.parse(isAuthenticatedElement.textContent) : false;
+        const username = usernameElement ? usernameElement.textContent : '';
+
         const headerHTML = `
             <header>
                 <div class="logo">
@@ -26,11 +34,21 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
                 <div class="iconos">
                     <i class="fas fa-shopping-cart"></i>
+                    <div class="username-container">
+                        ${isAuthenticated ? `<span>Welcome, ${username}</span>` : '<a href="/login/">Iniciar Sesión</a>'}
+                    </div>
                     <div class="dropdown">
                         <i class="fas fa-user" onclick="toggleUserDropdown()"></i>
                         <div class="dropdown-menu" id="userDropdown">
-                            <a href="/login/">Iniciar Sesión</a> <!-- Usa la ruta absoluta -->
-                            <a href="/register/">Crear Cuenta</a>
+                            ${isAuthenticated ? `
+                                <form action="/logout/" method="post">
+                                    <input type="hidden" name="csrfmiddlewaretoken" value="${csrfToken}">
+                                    <button type="submit" class="btn btn-link">Cerrar Sesión</button>
+                                </form>
+                            ` : `
+                                <a href="/login/">Iniciar Sesión</a>
+                                <a href="/register/">Crear Cuenta</a>
+                            `}
                         </div>
                     </div>
                 </div>
